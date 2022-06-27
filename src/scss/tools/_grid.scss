@@ -1,0 +1,43 @@
+/*reference: https://getbootstrap.com/docs/4.0/layout/grid/ , les breakpoints seront certainement à adapter dans le futur*/
+$breakpoints: (
+    md: 720px,
+    lg: 960px
+);
+
+$grid-col: 12; 
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col{
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+/*on génère les col*/
+@for $i from 1 through $grid-col{
+    .col-#{$i}{
+        flex: 0 0 calc(100% / $grid-col)*$i;
+        max-width: calc(100% / $grid-col)*$i;
+    }
+}
+
+/*on boucle sur le tableau breakpoints en ajoutant le type d'écran au col et la taille au @media*/
+@each $screen, $size in $breakpoints{
+    @media screen and (min-width: $size){
+        .col-#{$screen}{
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+    @for $i from 1 through $grid-col{
+        .col-#{$screen}-#{$i}{
+            flex: 0 0 calc(100% / $grid-col)*$i;
+            max-width: calc(100% / $grid-col)*$i;
+            }
+        }
+    }
+}

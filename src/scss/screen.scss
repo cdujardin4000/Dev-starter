@@ -1,0 +1,20 @@
+/* ordre d'importation des fichiers */
+// 0. Variables 
+@import "base/variables";
+
+// 1. Tools
+@import "tools/reset";
+@import "tools/grid";
+@import "tools/test";
+
+// 2. Base
+@import "base/base";
+/*
+// 3. Layout
+@import "layout/layout";
+
+// 4. Charger les modules
+@import "pages/home";
+*/
+
+// 5. Charger la police
